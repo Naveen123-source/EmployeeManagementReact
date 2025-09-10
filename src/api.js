@@ -1,5 +1,5 @@
 import axios from "axios"
-const apiBase = "https://localhost:5001/api/employees"
+const apiBase = "https://localhost:7046/api/Employees"
 export async function fetchAll() {
   const res = await axios.get(apiBase)
   return res.data

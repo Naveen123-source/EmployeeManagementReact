@@ -3,7 +3,8 @@ import EmployeeList from "./components/EmployeeList"
 import EmployeeForm from "./components/EmployeeForm"
 export default function App() {
   const [mode, setMode] = useState("list")
-  const [editId, setEditId] = useState(null)
+  const [editEmployee, setEditEmployee] = useState(null)
+
   return (
     <div className="app">
       <header className="app-header">
@@ -13,18 +14,18 @@ export default function App() {
         {mode === "list" && (
           <EmployeeList
             onAdd={() => {
-              setEditId(null)
+              setEditEmployee(null)
               setMode("form")
             }}
-            onEdit={(id) => {
-              setEditId(id)
+            onEdit={(employee) => {      // receive full employee object
+              setEditEmployee(employee)
               setMode("form")
             }}
           />
         )}
         {mode === "form" && (
           <EmployeeForm
-            id={editId}
+            employee={editEmployee}   // pass the full object
             onCancel={() => setMode("list")}
             onSaved={() => setMode("list")}
           />
@@ -33,3 +34,4 @@ export default function App() {
     </div>
   )
 }
+
